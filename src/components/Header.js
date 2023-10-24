@@ -1,4 +1,6 @@
-export default function Header() {
+import "../styles/header.css";
+
+function Header() {
   // javaScript 코드 자리
   return (
     // html 코드 자리
@@ -87,3 +89,5 @@ export default function Header() {
     </header>
   );
 }
+
+export default Header;
