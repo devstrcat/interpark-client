@@ -3,9 +3,9 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div class="wrap">
+    <div className="wrap">
       <Header />
-      <div class="main">메인</div>
+      <div className="main">메인</div>
       <Footer />
     </div>
   );
