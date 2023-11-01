@@ -1,0 +1,164 @@
+.common {
+  position: relative;
+  padding: 30px 0 60px;
+}
+
+.c-inner {
+  position: relative;
+  width: 1280px;
+  margin: 0 auto;
+}
+
+.c-header {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.c-title {
+  margin-bottom: 0.2rem;
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 3.3rem;
+  color: #000;
+  text-align: center;
+}
+
+.c-txt {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 300;
+  line-height: 2.4rem;
+  color: #a7a9a7;
+  text-align: center;
+}
+
+.c-main {
+  position: relative;
+}
+
+.c-cate {
+  display: flex;
+  justify-content: center;
+}
+
+.c-list {
+  position: relative;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.c-list li {
+  position: relative;
+}
+
+.cate-bt {
+  position: relative;
+  height: 4.4rem;
+  display: block;
+  padding: 0 2rem;
+  border: 1px solid #e5e5e5;
+  background-color: #fff;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 4.4rem;
+  color: #111;
+  cursor: pointer;
+  border-radius: 4.4rem;
+}
+
+.cate-bt-active {
+  border: 1px solid #333;
+  background-color: #333;
+  color: #fff;
+  text-shadow: 0.025rem 0 0.01rem, -0.025rem 0 0.01rem;
+}
+
+.c-go {
+  position: relative;
+  text-align: center;
+}
+
+.go-home {
+  height: 5.6rem;
+  margin: 2rem auto 0;
+  padding: 0 3.9rem;
+  border: 1px solid #e5e5e5;
+  background-color: #fff;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #333;
+  border-radius: 3.8rem;
+}
+
+.go-home:after {
+  content: "";
+  width: 0.7rem;
+  height: 1.1rem;
+  display: inline-block;
+  margin-left: 0.7rem;
+  background: url(../images/icon_linkArrow.svg) no-repeat 50%;
+}
+
+.c-slide-prev {
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #e5e1e5;
+  /* 그림자 */
+  box-shadow: 0 0 0.8rem rgba(0, 0, 0, 0.13);
+  z-index: 2;
+  background-color: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+.c-slide-prev::before {
+  content: "";
+  position: relative;
+  width: 10px;
+  height: 18px;
+  display: block;
+  margin: 0 auto;
+  background: url("../images/slider_arrow.svg") no-repeat center;
+
+  transform: rotateY(180deg);
+}
+
+.c-slide-next {
+  position: absolute;
+  top: 50%;
+  right: 0px;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #e5e1e5;
+  /* 그림자 */
+  box-shadow: 0 0 0.8rem rgba(0, 0, 0, 0.13);
+  z-index: 2;
+  background-color: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  transform: translate(50%, -50%);
+  border-radius: 50%;
+}
+
+.c-slide-next::before {
+  content: "";
+  position: relative;
+  width: 10px;
+  height: 18px;
+  display: block;
+  margin: 0 auto;
+  background: url("../images/slider_arrow.svg") no-repeat center;
+}
+
+.c-slide-prev.swiper-button-disabled {
+  display: none;
+}
+
+.c-slide-next.swiper-button-disabled {
+  display: none;
+}

@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/anchor-has-content */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import "../styles/header.css";
 
 function Header() {
@@ -6,14 +8,11 @@ function Header() {
     // html 코드 자리
     // <!-- 상단 영역 -->
     <header className="header">
-      {/* <!-- 레이아웃 영역 : div --> */}
       <div className="h-inner">
         <div className="h-top">
           <div className="h-top-left">
-            <a href="index.html" className="logo"></a>
-            {/* <!-- 검색은 div 하나 주자 --> */}
+            <a href="#" className="logo"></a>
             <div className="h-search">
-              {/* <!-- 사용자가 데이터를 입력한다. --> */}
               <form className="search-f">
                 <input type="text" className="search-word" />
                 <input type="button" value="검색" className="search-bt" />
