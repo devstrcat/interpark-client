@@ -1,11 +1,15 @@
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import { useRef } from "react";
 import "swiper/css";
 import "../styles/visual.css";
-// import required modules
-import { Autoplay, Navigation } from "swiper/modules";
 
 function Visual() {
   // js 코드 자리
+  //jsx 에 작성된 html 태그를 React 에서 참조
+  // 1. swiper 슬라이드 태그를 참조한다.
+  const swiperRef = useRef();
+
   return (
     <section className="visual">
       <div className="visual-inner">
@@ -15,15 +19,14 @@ function Visual() {
           loop={true}
           speed={500}
           autoplay={{
-            delay: 1000,
+            delay: 2000,
             disableOnInteraction: false,
           }}
-          navigation={{
-            nextEl: ".visual-slide-next",
-            prevEl: ".visual-slide-prev",
-          }}
-          modules={[Autoplay, Navigation]}
+          modules={[Autoplay]}
           className="visual-slide"
+          onSwiper={(swiper) => {
+            swiperRef.current = swiper;
+          }}
         >
           <SwiperSlide>
             <div className="visual-slide-item">
@@ -77,12 +80,18 @@ function Visual() {
             </div>
           </SwiperSlide>
         </Swiper>
-
-        <div className="swiper visual-slide">
-          <div className="swiper-wrapper"></div>
-        </div>
-        <button className="visual-slide-prev c-slide-prev"></button>
-        <button className="visual-slide-next c-slide-next"></button>
+        <button
+          className="visual-slide-prev c-slide-prev"
+          onClick={() => {
+            swiperRef.current.slidePrev();
+          }}
+        ></button>
+        <button
+          className="visual-slide-next c-slide-next"
+          onClick={() => {
+            swiperRef.current.slideNext();
+          }}
+        ></button>
       </div>
     </section>
   );

@@ -2,6 +2,7 @@ import "./styles/common.css";
 import Header from "./components/Header";
 import Visual from "./components/Visual";
 import Recommend from "./components/Recommend";
+import Tour from "./components/tour";
 import Footer from "./components/Footer";
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
       <div className="main">
         <Visual />
         <Recommend />
+        <Tour />
       </div>
       <Footer />
     </div>
