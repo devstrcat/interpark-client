@@ -2,7 +2,7 @@ import "./styles/common.css";
 import Header from "./components/Header";
 import Visual from "./components/Visual";
 import Recommend from "./components/Recommend";
-import Tour from "./components/tour";
+import Tour from "./components/Tour";
 import Footer from "./components/Footer";
 
 function App() {
