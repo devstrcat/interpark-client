@@ -13,22 +13,22 @@ function Tour() {
   };
 
   const getJsonData = () => {
-    fetch("json/tour1.json")
+    fetch("json/tour.json")
       .then((response) => {
         return response.json();
       })
       .then((result) => {
-        // console.log("result : ", result);
+        console.log("result : ", result);
         let arr = [];
         for (let i = 0; i < result.total; i++) {
           const obj = result["tour_" + (i + 1)];
           arr[i] = obj;
         }
-        // console.log(arr);
+        console.log(arr);
         setHtmlTag(arr);
       })
       .catch((error) => {
-        // console.log(error);
+        console.log(error);
       });
   };
   let [htmlTag, setHtmlTag] = useState([]);
