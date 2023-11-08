@@ -24,7 +24,7 @@ function Tour() {
         setHtmlTag(arr);
       })
       .catch((error) => {
-        // console.log(error);
+        console.log(error);
       });
   };
   let [htmlTag, setHtmlTag] = useState([]);
