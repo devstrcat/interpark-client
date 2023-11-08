@@ -18,13 +18,13 @@ function Tour() {
         return response.json();
       })
       .then((result) => {
-        console.log("result : ", result);
+        // console.log("result : ", result);
         let arr = [];
         for (let i = 0; i < result.total; i++) {
           const obj = result["tour_" + (i + 1)];
           arr[i] = obj;
         }
-        console.log(arr);
+        // console.log(arr);
         setHtmlTag(arr);
       })
       .catch((error) => {
