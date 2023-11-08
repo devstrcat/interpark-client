@@ -5,7 +5,6 @@ import "../styles/visual.css";
 import { useEffect, useRef, useState } from "react";
 // axios 모듈 가져오기
 import axios from "axios";
-import { BtSlideNext, BtSlidePrev } from "../components/ui/buttons";
 
 function Visual() {
   // js 코드 자리
@@ -121,8 +120,8 @@ function Visual() {
             );
           })}
         </Swiper>
-        <BtSlidePrev className="visual-slide-prev c-slide-prev"></BtSlidePrev>
-        <BtSlideNext className="visual-slide-next c-slide-prev"></BtSlideNext>
+        <button className="visual-slide-prev c-slide-prev"></button>
+        <button className="visual-slide-next c-slide-next"></button>
       </div>
     </section>
   );

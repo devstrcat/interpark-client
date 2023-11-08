@@ -6,7 +6,6 @@ import "swiper/css/navigation";
 import "../styles/recommend.css";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
-import { BtSlidePrev, BtSlideNext } from "../components/ui/buttons";
 import { BtCate } from "../components/ui/buttons";
 import { InnerArea, SectionTag } from "./layout/layout";
 
@@ -134,8 +133,8 @@ function Recommend() {
               })}
             </Swiper>
           </div>
-          <BtSlidePrev className="recommend-slide-prev c-slide-prev"></BtSlidePrev>
-          <BtSlideNext className="recommend-slide-next c-slide-prev"></BtSlideNext>
+          <button className="recommend-slide-prev c-slide-prev"></button>
+          <button className="recommend-slide-next c-slide-next"></button>
         </div>
         <div className="recommend-go c-go">
           <button className="go-home">쇼핑 홈 바로가기</button>
