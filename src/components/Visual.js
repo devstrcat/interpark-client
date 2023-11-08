@@ -121,8 +121,8 @@ function Visual() {
             );
           })}
         </Swiper>
-        <BtSlidePrev className="visual-slide-prev"></BtSlidePrev>
-        <BtSlideNext className="visual-slide-next"></BtSlideNext>
+        <BtSlidePrev className="visual-slide-prev c-slide-prev"></BtSlidePrev>
+        <BtSlideNext className="visual-slide-next c-slide-prev"></BtSlideNext>
       </div>
     </section>
   );

@@ -134,8 +134,8 @@ function Recommend() {
               })}
             </Swiper>
           </div>
-          <BtSlidePrev className="recommend-slide-prev"></BtSlidePrev>
-          <BtSlideNext className="recommend-slide-next"></BtSlideNext>
+          <BtSlidePrev className="recommend-slide-prev c-slide-prev"></BtSlidePrev>
+          <BtSlideNext className="recommend-slide-next c-slide-prev"></BtSlideNext>
         </div>
         <div className="recommend-go c-go">
           <button className="go-home">쇼핑 홈 바로가기</button>
