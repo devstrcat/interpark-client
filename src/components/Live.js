@@ -14,22 +14,22 @@ function Live() {
   };
 
   const getJsonData = () => {
-    fetch("live.json")
+    fetch("json/live.json")
       .then((response) => {
         return response.json();
       })
       .then((result) => {
-        console.log("result : ", result);
+        // console.log("result : ", result);
         let arr = [];
         for (let i = 0; i < result.total; i++) {
           const obj = result["live_" + (i + 1)];
           arr[i] = obj;
         }
-        console.log(arr);
+        // console.log(arr);
         setHtmlTag(arr);
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
   };
   let [htmlTag, setHtmlTag] = useState([]);
@@ -69,7 +69,7 @@ function Live() {
                     {item.live_preparing.preparing_image === "" ? (
                       <div className="live-slide-item">
                         <a href={item.live_info.url} className="live-link">
-                          <div className="live-img">
+                          <div className={item.live_info.door}>
                             <img
                               src={item.live_info.image}
                               alt={item.live_info.url}
@@ -145,25 +145,25 @@ function Live() {
                         </a>
                       </div>
                     ) : (
-                      <div class="live-slide-item live-preparing">
+                      <div className="live-slide-item live-preparing">
                         <a
                           href={item.live_preparing.preparing_url}
-                          class="live-preparing-link"
+                          className="live-preparing-link"
                         >
-                          <ul class="live-preparing-info">
-                            <li class="preparing-img">
+                          <ul className="live-preparing-info">
+                            <li className="preparing-img">
                               <img
                                 src={item.live_preparing.preparing_image}
                                 alt={item.live_preparing.preparing_url}
                               />
                             </li>
                             <li>
-                              <p class="preparing-txt">
+                              <p className="preparing-txt">
                                 {item.live_preparing.preparing_txt}
                               </p>
                             </li>
                             <li>
-                              <span class="preparing-btn">
+                              <span className="preparing-btn">
                                 {item.live_preparing.preparing_btn}
                               </span>
                             </li>

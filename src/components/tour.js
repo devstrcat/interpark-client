@@ -13,22 +13,22 @@ function Tour() {
   };
 
   const getJsonData = () => {
-    fetch("tour.json")
+    fetch("json/tour1.json")
       .then((response) => {
         return response.json();
       })
       .then((result) => {
-        console.log("result : ", result);
+        // console.log("result : ", result);
         let arr = [];
         for (let i = 0; i < result.total; i++) {
           const obj = result["tour_" + (i + 1)];
           arr[i] = obj;
         }
-        console.log(arr);
+        // console.log(arr);
         setHtmlTag(arr);
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
   };
   let [htmlTag, setHtmlTag] = useState([]);
@@ -39,30 +39,32 @@ function Tour() {
   }, []);
 
   return (
-    <section class="tour common">
-      <div class="tour-inner c-inner">
-        <div class="tour-header c-header">
-          <h2 class="tour-title c-title">투어 특가</h2>
-          <span class="tour-txt c-txt">해외여행은 인터파크다</span>
+    <section className="tour common">
+      <div className="tour-inner c-inner">
+        <div className="tour-header c-header">
+          <h2 className="tour-title c-title">투어 특가</h2>
+          <span className="tour-txt c-txt">해외여행은 인터파크다</span>
         </div>
-        <div class="tour-main c-main">
-          <div class="tour-cate c-cate">
-            <ul class="tour-list c-list">
+        <div className="tour-main c-main">
+          <div className="tour-cate c-cate">
+            <ul className="tour-list c-list">
               <li>
-                <button class="cate-bt cate-bt-active">망설이면 품절</button>
+                <button className="cate-bt cate-bt-active">
+                  망설이면 품절
+                </button>
               </li>
               <li>
-                <button class="cate-bt">패키지</button>
+                <button className="cate-bt">패키지</button>
               </li>
               <li>
-                <button class="cate-bt">국내숙소</button>
+                <button className="cate-bt">국내숙소</button>
               </li>
               <li>
-                <button class="cate-bt">해외숙소</button>
+                <button className="cate-bt">해외숙소</button>
               </li>
             </ul>
           </div>
-          <div class="tour-slide-wrap">
+          <div className="tour-slide-wrap">
             <Swiper
               slidesPerView={3}
               slidesPerGroup={3}
@@ -109,11 +111,11 @@ function Tour() {
               })}
             </Swiper>
           </div>
-          <button class="tour-slide-prev c-slide-prev"></button>
-          <button class="tour-slide-next c-slide-next"></button>
+          <button className="tour-slide-prev c-slide-prev"></button>
+          <button className="tour-slide-next c-slide-next"></button>
         </div>
-        <div class="tour-go c-go">
-          <button class="go-home">투어 홈 바로가기</button>
+        <div className="tour-go c-go">
+          <button className="go-home">투어 홈 바로가기</button>
         </div>
       </div>
     </section>

@@ -36,6 +36,9 @@
 
 .recommend-img img {
   position: absolute;
+  /* left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); */
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -82,6 +85,7 @@
 .recommend-good-info-desc {
   position: relative;
   display: -webkit-box;
+  /* 2줄이상 말줄임 */
   overflow: hidden;
   font-size: 1.5rem;
   color: #111;
@@ -103,7 +107,7 @@
   height: 5rem;
   display: block;
   margin: 0 auto 0.6rem;
-  background: url("../images/btn_moreProdu.svg") no-repeat 50%;
+  background: url(../images/btn_moreProdu.svg) no-repeat 50%;
   border-radius: 5rem;
 }
 

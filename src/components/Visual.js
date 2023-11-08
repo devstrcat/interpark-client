@@ -1,10 +1,11 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
-
+import { Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
-
 import "../styles/visual.css";
 import { useEffect, useRef, useState } from "react";
+// axios 모듈 가져오기
+import axios from "axios";
+import { BtSlideNext, BtSlidePrev } from "../components/ui/buttons";
 
 function Visual() {
   // js 코드 자리
@@ -12,20 +13,32 @@ function Visual() {
   // 1. swiper 슬라이드 태그를 참조한다.
   const swiperRef = useRef();
 
-  // 외부 데이터 연동 ( fetch 활용)
-
-  const fetchGetData = () => {
-    fetch("visual.json")
-      .then((res) => res.json())
-      .then((result) => {
-        // console.log(result);
-        // 자료를 출력하자.
-        makeVisualSlide(result);
+  // 외부 데이터 연동 ( axios 활용)
+  const axiosGetData = function () {
+    axios
+      .get("json/visual.json")
+      .then(function (res) {
+        // console.log(res);
+        makeVisualSlide(res.data);
       })
-      .catch((error) => {
+      .catch(function (error) {
         console.log(error);
       });
   };
+
+  // 외부 데이터 연동 ( fetch 활용)
+  // const fetchGetData = () => {
+  //   fetch("visual.json")
+  //     .then((res) => res.json())
+  //     .then((result) => {
+  //       // console.log(result);
+  //       // 자료를 출력하자.
+  //       makeVisualSlide(result);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
   // visual 슬라이드 내용 채우는 기능
   // 리액트용 변수 : 컴포넌트에 출력할 JSX
   //       일반변수 말고  리액트용 변수를 state 라고 합니다.
@@ -42,7 +55,7 @@ function Visual() {
       // console.log("visual_" + (i + 1));
       visualArray[i] = visualRes["visual_" + (i + 1)];
     }
-    console.log(visualArray);
+    // console.log(visualArray);
     setVisualHtml(visualArray);
 
     // // 배열 자료(visualArray) 를 뜯어서 컴포넌트 담기
@@ -67,10 +80,9 @@ function Visual() {
   useEffect(() => {
     // 랜더링 될때
     //  visual.json 데이터 불러들이기 기능실행
-    fetchGetData();
-    return () => {
-      // 삭제될때 (Clean Up 함수)
-    };
+    axiosGetData();
+    // fetchGetData();
+    return () => {};
   }, []);
 
   return (
@@ -83,10 +95,14 @@ function Visual() {
             delay: 2000,
             disableOnInteraction: false,
           }}
-          modules={[Autoplay]}
+          modules={[Autoplay, Navigation]}
           loop={true}
           onSwiper={(swiper) => {
             swiperRef.current = swiper;
+          }}
+          navigation={{
+            nextEl: ".visual-slide-next",
+            prevEl: ".visual-slide-prev",
           }}
           className="visual-slide"
         >
@@ -105,20 +121,8 @@ function Visual() {
             );
           })}
         </Swiper>
-
-        <button
-          className="visual-slide-prev c-slide-prev"
-          onClick={() => {
-            swiperRef.current.slidePrev();
-          }}
-        ></button>
-
-        <button
-          className="visual-slide-next c-slide-next"
-          onClick={() => {
-            swiperRef.current.slideNext();
-          }}
-        ></button>
+        <BtSlidePrev className="visual-slide-prev"></BtSlidePrev>
+        <BtSlideNext className="visual-slide-next"></BtSlideNext>
       </div>
     </section>
   );

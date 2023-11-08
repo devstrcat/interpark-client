@@ -5,6 +5,10 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "../styles/recommend.css";
 import { useEffect, useRef, useState } from "react";
+import axios from "axios";
+import { BtSlidePrev, BtSlideNext } from "../components/ui/buttons";
+import { BtCate } from "../components/ui/buttons";
+import { InnerArea, SectionTag } from "./layout/layout";
 
 function Recommend() {
   // js 코드 자리
@@ -14,35 +18,34 @@ function Recommend() {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
-  const getJsonData = () => {
-    fetch("recommend.json")
-      .then((response) => {
-        return response.json();
-      })
-      .then((result) => {
-        console.log("result : ", result);
+  const axiosJsonData = function () {
+    axios
+      .get("json/recommend1.json")
+      .then(function (res) {
+        // console.log(res);
+        const result = res.data;
         let arr = [];
         for (let i = 0; i < result.total; i++) {
           const obj = result["recommend_" + (i + 1)];
           arr[i] = obj;
         }
-        console.log(arr);
         setHtmlTag(arr);
       })
-      .catch((error) => {
+      .catch(function (error) {
         console.log(error);
       });
   };
+
   let [htmlTag, setHtmlTag] = useState([]);
 
   useEffect(() => {
-    getJsonData();
+    axiosJsonData();
     return () => {};
   }, []);
 
   return (
-    <section className="recommend common">
-      <div className="recommend-inner c-inner">
+    <SectionTag pt={30} pb={60}>
+      <InnerArea h={405}>
         <div className="recommend-header c-header">
           <h2 className="recommend-title c-title">쇼핑 추천</h2>
           <span className="recommend-txt c-txt">
@@ -53,16 +56,16 @@ function Recommend() {
           <div className="recommend-cate c-cate">
             <ul className="recommend-list c-list">
               <li>
-                <button className="cate-bt cate-bt-active">쎈딜</button>
+                <BtCate focus={true}>쎈딜</BtCate>
               </li>
               <li>
-                <button className="cate-bt">베스트</button>
+                <BtCate>베스트</BtCate>
               </li>
               <li>
-                <button className="cate-bt">블프데이</button>
+                <BtCate>블프데이</BtCate>
               </li>
               <li>
-                <button className="cate-bt">디지털프라자</button>
+                <BtCate>디지털프라자</BtCate>
               </li>
               <li>
                 <a href="#" className="cate-bt">
@@ -90,24 +93,24 @@ function Recommend() {
                 return (
                   <SwiperSlide key={index}>
                     {index === htmlTag.length - 1 ? (
-                      <div class="recommend-slide-item-btnmore">
-                        <div class="recommend-slide-item-btnmore">
-                          <a href={item.url} class="recommend-link">
+                      <div className="recommend-slide-item-btnmore">
+                        <div className="recommend-slide-item-btnmore">
+                          <a href={item.url} className="recommend-link">
                             <i></i>
-                            <g>전체보기</g>
+                            <h2>전체보기</h2>
                           </a>
                         </div>
                       </div>
                     ) : (
-                      <div class="recommend-slide-item">
-                        <a href={item.url} class="recommend-link">
-                          <div class="recommend-img">
+                      <div className="recommend-slide-item">
+                        <a href={item.url} className="recommend-link">
+                          <div className="recommend-img">
                             <img src={item.file} alt={item.url} />
                           </div>
-                          <div class="recommend-info">
-                            <ul class="recommend-good-list">
+                          <div className="recommend-info">
+                            <ul className="recommend-good-list">
                               <li>
-                                <span class="recommend-good-info-price">
+                                <span className="recommend-good-info-price">
                                   <b>
                                     {item.discount === 0
                                       ? ""
@@ -117,7 +120,9 @@ function Recommend() {
                                 </span>
                               </li>
                               <li>
-                                <p class="recommend-good-info-desc">{item.p}</p>
+                                <p className="recommend-good-info-desc">
+                                  {item.p}
+                                </p>
                               </li>
                             </ul>
                           </div>
@@ -129,14 +134,14 @@ function Recommend() {
               })}
             </Swiper>
           </div>
-          <button className="recommend-slide-prev c-slide-prev"></button>
-          <button className="recommend-slide-next c-slide-next"></button>
+          <BtSlidePrev className="recommend-slide-prev"></BtSlidePrev>
+          <BtSlideNext className="recommend-slide-next"></BtSlideNext>
         </div>
         <div className="recommend-go c-go">
           <button className="go-home">쇼핑 홈 바로가기</button>
         </div>
-      </div>
-    </section>
+      </InnerArea>
+    </SectionTag>
   );
 }
 export default Recommend;
