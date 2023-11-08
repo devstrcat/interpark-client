@@ -13,7 +13,7 @@ function Tour() {
   };
 
   const getJsonData = () => {
-    fetch("json/tour.json")
+    fetch("json/tour1.json")
       .then((response) => {
         return response.json();
       })
@@ -28,7 +28,7 @@ function Tour() {
         setHtmlTag(arr);
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
   };
   let [htmlTag, setHtmlTag] = useState([]);
