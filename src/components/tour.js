@@ -8,10 +8,6 @@ import "../styles/tour.css";
 function Tour() {
   const swiperRef = useRef();
 
-  const numberWithCommas = (number) => {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  };
-
   const getJsonData = () => {
     fetch("json/tour1.json")
       .then((response) => {
@@ -99,7 +95,7 @@ function Tour() {
                             </li>
                             <li>
                               <span className="tour-good-info-price">
-                                <em>{numberWithCommas(item.price)}</em>원~
+                                <em>{item.price}</em>원~
                               </span>
                             </li>
                           </ul>
