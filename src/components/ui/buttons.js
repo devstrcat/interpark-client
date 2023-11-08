@@ -24,8 +24,7 @@ export const BtSlidePrev = styled.button`
     height: 18px;
     display: block;
     margin: 0 auto;
-    background: url("http://localhost:3000/images/slider_arrow.svg") no-repeat
-      center;
+    background: url("..images/slider_arrow.svg") no-repeat center;
 
     transform: rotateY(180deg);
   }
@@ -53,8 +52,7 @@ export const BtSlideNext = styled.button`
     height: 18px;
     display: block;
     margin: 0 auto;
-    background: url("http://localhost:3000/images/slider_arrow.svg") no-repeat
-      center;
+    background: url("../images/slider_arrow.svg") no-repeat center;
   }
 `;
 //  카테고리 버튼
