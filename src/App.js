@@ -2,7 +2,7 @@ import "./styles/common.css";
 import Header from "./components/Header";
 import Visual from "./components/Visual";
 import Recommend from "./components/Recommend";
-import Tour from "./components/abcd";
+import Tour from "./components/Tour";
 import Ticket from "./components/Ticket";
 import Live from "./components/Live";
 import Book from "./components/Book";
