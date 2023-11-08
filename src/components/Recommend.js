@@ -97,7 +97,7 @@ function Recommend() {
                         <div className="recommend-slide-item-btnmore">
                           <a href={item.url} className="recommend-link">
                             <i></i>
-                            <h2>전체보기</h2>
+                            <p>전체보기</p>
                           </a>
                         </div>
                       </div>

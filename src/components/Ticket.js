@@ -94,7 +94,7 @@ function Ticket() {
                       <div className="ticket-slide-item-btnmore">
                         <a href={item.url} className="ticket-link">
                           <i></i>
-                          <h2>전체보기</h2>
+                          <p>전체보기</p>
                         </a>
                       </div>
                     ) : (
