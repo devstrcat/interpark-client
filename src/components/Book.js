@@ -120,7 +120,12 @@ function Book() {
                             </li>
                             <li>
                               <p className="book-good-info-price">
-                                <em>{numberWithCommas(item.price)}</em>원
+                                <em>
+                                  {item.price === 0
+                                    ? ""
+                                    : numberWithCommas(item.price)}
+                                </em>
+                                원
                               </p>
                             </li>
                           </ul>

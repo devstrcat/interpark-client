@@ -12,6 +12,10 @@ function Tour() {
   const [active, setActiveCategory] = useState("tour1");
   const [htmlTag, setHtmlTag] = useState([]);
 
+  const numberWithCommas = (str) => {
+    return str.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
   const axiosJsonData = function (category) {
     axios
       .get(`json/${category}.json`)
@@ -116,7 +120,12 @@ function Tour() {
                             </li>
                             <li>
                               <span className="tour-good-info-price">
-                                <em>{item.price}</em>원~
+                                <em>
+                                  {item.price === 0
+                                    ? ""
+                                    : numberWithCommas(item.price)}
+                                </em>
+                                원~
                               </span>
                             </li>
                           </ul>
