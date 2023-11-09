@@ -7,15 +7,16 @@ import "../styles/recommend.css";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { BtCate } from "../components/ui/buttons";
+import React from "react";
 import { InnerArea, SectionTag } from "./layout/layout";
+
+const numberWithCommas = (number) => {
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
 
 function Recommend() {
   // js 코드 자리
   const swiperRef = useRef();
-
-  const numberWithCommas = (number) => {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  };
 
   const [active, setActiveCategory] = useState("recommend1");
   const [htmlTag, setHtmlTag] = useState([]);
