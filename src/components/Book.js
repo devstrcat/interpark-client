@@ -4,40 +4,43 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "../styles/book.css";
 import { useEffect, useRef, useState } from "react";
+import axios from "axios";
+import { BtCate } from "../components/ui/buttons";
 
 function Book() {
   // js 코드 자리
   const swiperRef = useRef();
+  const [active, setActiveCategory] = useState("book1");
+  const [htmlTag, setHtmlTag] = useState([]);
 
   const numberWithCommas = (number) => {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
-  const getJsonData = () => {
-    fetch("json/book1.json")
-      .then((response) => {
-        return response.json();
-      })
-      .then((result) => {
-        // console.log("result : ", result);
+  const axiosJsonData = function (category) {
+    axios
+      .get(`json/${category}.json`)
+      .then(function (res) {
+        const result = res.data;
         let arr = [];
         for (let i = 0; i < result.total; i++) {
           const obj = result["book_" + (i + 1)];
           arr[i] = obj;
         }
-        // console.log(arr);
         setHtmlTag(arr);
       })
-      .catch((error) => {
-        // console.log(error);
+      .catch(function (error) {
+        console.log(error);
       });
   };
-  let [htmlTag, setHtmlTag] = useState([]);
 
   useEffect(() => {
-    getJsonData();
-    return () => {};
-  }, []);
+    axiosJsonData(active);
+  }, [active]);
+
+  const CategoryClick = (category) => {
+    setActiveCategory(category);
+  };
 
   return (
     <section className="book common">
@@ -52,16 +55,36 @@ function Book() {
           <div className="book-cate c-cate">
             <ul className="book-list c-list">
               <li>
-                <button className="cate-bt cate-bt-active">MD`s Pick</button>
+                <BtCate
+                  focus={active === "book1"}
+                  onClick={() => CategoryClick("book1")}
+                >
+                  MD`s Pick
+                </BtCate>
               </li>
               <li>
-                <button className="cate-bt">배스트셀러</button>
+                <BtCate
+                  focus={active === "book2"}
+                  onClick={() => CategoryClick("book2")}
+                >
+                  배스트셀러
+                </BtCate>
               </li>
               <li>
-                <button className="cate-bt">신간추천</button>
+                <BtCate
+                  focus={active === "book3"}
+                  onClick={() => CategoryClick("book3")}
+                >
+                  신간추천
+                </BtCate>
               </li>
               <li>
-                <button className="cate-bt">특가할인</button>
+                <BtCate
+                  focus={active === "book4"}
+                  onClick={() => CategoryClick("book4")}
+                >
+                  특가할인
+                </BtCate>
               </li>
             </ul>
           </div>

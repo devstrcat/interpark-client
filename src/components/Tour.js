@@ -4,35 +4,38 @@ import { useEffect, useRef, useState } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "../styles/tour.css";
+import axios from "axios";
+import { BtCate } from "../components/ui/buttons";
 
 function Tour() {
   const swiperRef = useRef();
+  const [active, setActiveCategory] = useState("tour1");
+  const [htmlTag, setHtmlTag] = useState([]);
 
-  const getJsonData = () => {
-    fetch("json/tour1.json")
-      .then((response) => {
-        return response.json();
-      })
-      .then((result) => {
-        // console.log("result : ", result);
+  const axiosJsonData = function (category) {
+    axios
+      .get(`json/${category}.json`)
+      .then(function (res) {
+        const result = res.data;
         let arr = [];
         for (let i = 0; i < result.total; i++) {
           const obj = result["tour_" + (i + 1)];
           arr[i] = obj;
         }
-        // console.log(arr);
         setHtmlTag(arr);
       })
-      .catch((error) => {
-        // console.log(error);
+      .catch(function (error) {
+        console.log(error);
       });
   };
-  let [htmlTag, setHtmlTag] = useState([]);
 
   useEffect(() => {
-    getJsonData();
-    return () => {};
-  }, []);
+    axiosJsonData(active);
+  }, [active]);
+
+  const CategoryClick = (category) => {
+    setActiveCategory(category);
+  };
 
   return (
     <section className="tour common">
@@ -45,18 +48,36 @@ function Tour() {
           <div className="tour-cate c-cate">
             <ul className="tour-list c-list">
               <li>
-                <button className="cate-bt cate-bt-active">
+                <BtCate
+                  focus={active === "tour1"}
+                  onClick={() => CategoryClick("tour1")}
+                >
                   망설이면 품절
-                </button>
+                </BtCate>
               </li>
               <li>
-                <button className="cate-bt">패키지</button>
+                <BtCate
+                  focus={active === "tour2"}
+                  onClick={() => CategoryClick("tour2")}
+                >
+                  패키지
+                </BtCate>
               </li>
               <li>
-                <button className="cate-bt">국내숙소</button>
+                <BtCate
+                  focus={active === "tour3"}
+                  onClick={() => CategoryClick("tour3")}
+                >
+                  국내숙소
+                </BtCate>
               </li>
               <li>
-                <button className="cate-bt">해외숙소</button>
+                <BtCate
+                  focus={active === "tour4"}
+                  onClick={() => CategoryClick("tour4")}
+                >
+                  해외숙소
+                </BtCate>
               </li>
             </ul>
           </div>

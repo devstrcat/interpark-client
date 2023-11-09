@@ -12,16 +12,17 @@ import { InnerArea, SectionTag } from "./layout/layout";
 function Recommend() {
   // js 코드 자리
   const swiperRef = useRef();
+  const [active, setActiveCategory] = useState("recommend1");
+  const [htmlTag, setHtmlTag] = useState([]);
 
   const numberWithCommas = (number) => {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
-  const axiosJsonData = function () {
+  const axiosJsonData = function (category) {
     axios
-      .get("json/recommend1.json")
+      .get(`json/${category}.json`)
       .then(function (res) {
-        // console.log(res);
         const result = res.data;
         let arr = [];
         for (let i = 0; i < result.total; i++) {
@@ -35,12 +36,13 @@ function Recommend() {
       });
   };
 
-  let [htmlTag, setHtmlTag] = useState([]);
-
   useEffect(() => {
-    axiosJsonData();
-    return () => {};
-  }, []);
+    axiosJsonData(active);
+  }, [active]);
+
+  const CategoryClick = (category) => {
+    setActiveCategory(category);
+  };
 
   return (
     <SectionTag pt={30} pb={60}>
@@ -55,16 +57,36 @@ function Recommend() {
           <div className="recommend-cate c-cate">
             <ul className="recommend-list c-list">
               <li>
-                <BtCate focus={true}>쎈딜</BtCate>
+                <BtCate
+                  focus={active === "recommend1"}
+                  onClick={() => CategoryClick("recommend1")}
+                >
+                  쎈딜
+                </BtCate>
               </li>
               <li>
-                <BtCate>베스트</BtCate>
+                <BtCate
+                  focus={active === "recommend2"}
+                  onClick={() => CategoryClick("recommend2")}
+                >
+                  베스트
+                </BtCate>
               </li>
               <li>
-                <BtCate>블프데이</BtCate>
+                <BtCate
+                  focus={active === "recommend3"}
+                  onClick={() => CategoryClick("recommend3")}
+                >
+                  교동
+                </BtCate>
               </li>
               <li>
-                <BtCate>디지털프라자</BtCate>
+                <BtCate
+                  focus={active === "recommend4"}
+                  onClick={() => CategoryClick("recommend4")}
+                >
+                  인기가전모음
+                </BtCate>
               </li>
               <li>
                 <a href="#" className="cate-bt">
@@ -91,7 +113,7 @@ function Recommend() {
               {htmlTag.map((item, index) => {
                 return (
                   <SwiperSlide key={index}>
-                    {index === htmlTag.length - 1 ? (
+                    {item.file === "" ? (
                       <div className="recommend-slide-item-btnmore">
                         <div className="recommend-slide-item-btnmore">
                           <a href={item.url} className="recommend-link">

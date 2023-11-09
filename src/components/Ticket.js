@@ -5,36 +5,39 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "../styles/ticket.css";
 import { useEffect, useRef, useState } from "react";
+import axios from "axios";
+import { BtCate } from "../components/ui/buttons";
 
 function Ticket() {
   // js 코드 자리
   const swiperRef = useRef();
+  const [active, setActiveCategory] = useState("ticket1");
+  const [htmlTag, setHtmlTag] = useState([]);
 
-  const getJsonData = () => {
-    fetch("json/ticket1.json")
-      .then((response) => {
-        return response.json();
-      })
-      .then((result) => {
-        // console.log("result : ", result);
+  const axiosJsonData = function (category) {
+    axios
+      .get(`json/${category}.json`)
+      .then(function (res) {
+        const result = res.data;
         let arr = [];
         for (let i = 0; i < result.total; i++) {
           const obj = result["ticket_" + (i + 1)];
           arr[i] = obj;
         }
-        // console.log(arr);
         setHtmlTag(arr);
       })
-      .catch((error) => {
+      .catch(function (error) {
         console.log(error);
       });
   };
-  let [htmlTag, setHtmlTag] = useState([]);
 
   useEffect(() => {
-    getJsonData();
-    return () => {};
-  }, []);
+    axiosJsonData(active);
+  }, [active]);
+
+  const CategoryClick = (category) => {
+    setActiveCategory(category);
+  };
 
   return (
     <section className="ticket common">
@@ -47,28 +50,68 @@ function Ticket() {
           <div className="ticket-cate c-cate">
             <ul className="ticket-list c-list">
               <li>
-                <button className="cate-bt cate-bt-active">뮤지컬</button>
+                <BtCate
+                  focus={active === "ticket1"}
+                  onClick={() => CategoryClick("ticket1")}
+                >
+                  뮤지컬
+                </BtCate>
               </li>
               <li>
-                <button className="cate-bt">콘서트</button>
+                <BtCate
+                  focus={active === "ticket2"}
+                  onClick={() => CategoryClick("ticket2")}
+                >
+                  콘서트
+                </BtCate>
               </li>
               <li>
-                <button className="cate-bt">스포츠</button>
+                <BtCate
+                  focus={active === "ticket3"}
+                  onClick={() => CategoryClick("ticket3")}
+                >
+                  스포츠
+                </BtCate>
               </li>
               <li>
-                <button className="cate-bt">전시/행사</button>
+                <BtCate
+                  focus={active === "ticket4"}
+                  onClick={() => CategoryClick("ticket4")}
+                >
+                  전시/행사
+                </BtCate>
               </li>
               <li>
-                <button className="cate-bt">클래식/무용</button>
+                <BtCate
+                  focus={active === "ticket5"}
+                  onClick={() => CategoryClick("ticket5")}
+                >
+                  클래식/무용
+                </BtCate>
               </li>
               <li>
-                <button className="cate-bt">아동/가족</button>
+                <BtCate
+                  focus={active === "ticket6"}
+                  onClick={() => CategoryClick("ticket6")}
+                >
+                  아동/가족
+                </BtCate>
               </li>
               <li>
-                <button className="cate-bt">연극</button>
+                <BtCate
+                  focus={active === "ticket7"}
+                  onClick={() => CategoryClick("ticket7")}
+                >
+                  연극
+                </BtCate>
               </li>
               <li>
-                <button className="cate-bt">래저/캠핑</button>
+                <BtCate
+                  focus={active === "ticket8"}
+                  onClick={() => CategoryClick("ticket8")}
+                >
+                  래저/캠핑
+                </BtCate>
               </li>
             </ul>
           </div>
