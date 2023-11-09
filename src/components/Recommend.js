@@ -15,9 +15,9 @@ function Recommend() {
   const [active, setActiveCategory] = useState("recommend1");
   const [htmlTag, setHtmlTag] = useState([]);
 
-  // const numberWithCommas = (str) => {
-  //   return str.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  // };
+  const numberWithCommas = (str) => {
+    return str.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
 
   const axiosJsonData = function (category) {
     axios
@@ -137,7 +137,7 @@ function Recommend() {
                                       ? item.discount + "%"
                                       : ""}
                                   </b>
-                                  <em>{item.price}</em>원~
+                                  <em>{numberWithCommas(item.price)}</em>원~
                                 </span>
                               </li>
                               <li>
