@@ -133,9 +133,9 @@ function Recommend() {
                               <li>
                                 <span className="recommend-good-info-price">
                                   <b>
-                                    {item.discount === 0
-                                      ? ""
-                                      : item.discount + "%"}
+                                    {item.discount !== 0
+                                      ? item.discount + "%"
+                                      : ""}
                                   </b>
                                   <em>{numberWithCommas(item.price)}</em>원~
                                 </span>
