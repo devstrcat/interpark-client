@@ -12,12 +12,13 @@ import { InnerArea, SectionTag } from "./layout/layout";
 function Recommend() {
   // js 코드 자리
   const swiperRef = useRef();
-  const [active, setActiveCategory] = useState("recommend1");
-  const [htmlTag, setHtmlTag] = useState([]);
 
   const numberWithCommas = (number) => {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
+
+  const [active, setActiveCategory] = useState("recommend1");
+  const [htmlTag, setHtmlTag] = useState([]);
 
   const axiosJsonData = function (category) {
     axios
