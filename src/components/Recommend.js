@@ -15,8 +15,8 @@ function Recommend() {
   const [active, setActiveCategory] = useState("recommend1");
   const [htmlTag, setHtmlTag] = useState([]);
 
-  const numberWithCommas = (number) => {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  const numberWithCommas = (str) => {
+    return str.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
   const axiosJsonData = function (category) {

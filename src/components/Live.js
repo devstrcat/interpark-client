@@ -9,8 +9,8 @@ function Live() {
   // js 코드 자리
   const swiperRef = useRef();
 
-  const numberWithCommas = (number) => {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  const numberWithCommas = (str) => {
+    return str.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
   const getJsonData = () => {
