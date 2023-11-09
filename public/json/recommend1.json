@@ -79,6 +79,8 @@
   },
   "recommend_12": {
     "file": "",
-    "url": "d.html"
+    "url": "d.html",
+    "discount": 0,
+    "price": 0
   }
 }

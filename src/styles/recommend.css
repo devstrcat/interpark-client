@@ -111,7 +111,7 @@
   border-radius: 5rem;
 }
 
-.recommend-link > p {
+.recommend-slide-item-btnmore .recommend-link > p {
   font-size: 14px;
   text-align: center;
 }
