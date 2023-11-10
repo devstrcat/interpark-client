@@ -13,6 +13,7 @@ function Ticket() {
   const swiperRef = useRef();
   const [active, setActiveCategory] = useState("ticket1");
   const [htmlTag, setHtmlTag] = useState([]);
+  const [jsonCategory, setJsonCategory] = useState("ticket1");
 
   const axiosJsonData = function (category) {
     axios
@@ -32,11 +33,16 @@ function Ticket() {
   };
 
   useEffect(() => {
-    axiosJsonData(active);
-  }, [active]);
+    axiosJsonData(jsonCategory); // JSON 데이터를 가져오는 함수
+
+    if (swiperRef.current) {
+      swiperRef.current.slideTo(0); // 첫 번째 슬라이드로 이동
+    }
+  }, [jsonCategory]); // jsonCategory가 변경될 때마다 실행
 
   const CategoryClick = (category) => {
     setActiveCategory(category);
+    setJsonCategory(category); // JSON 카테고리를 업데이트
   };
 
   return (
