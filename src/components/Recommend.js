@@ -22,7 +22,9 @@ function Recommend() {
 
   const axiosJsonData = function (category) {
     axios
-      .get(`json/${category}.json`)
+      .get(
+        `https://port-0-interpark-server-1igmo82cloqtzcjf.sel5.cloudtype.app/${category}`
+      )
       .then(function (res) {
         const result = res.data;
         let arr = [];
