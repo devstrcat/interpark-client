@@ -33,7 +33,7 @@ function Recommend() {
         setHtmlTag(arr);
       })
       .catch(function (error) {
-        console.log(error);
+        // console.log(error);
       });
   };
 
